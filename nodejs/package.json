@@ -1,0 +1,26 @@
+{
+    "name": "ServerWebGamePost",
+    "version": "1.0",
+    "description": "A multiplayer server system based on web servers with POST method",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Trollhunters501/ServerWebGamePost.git"
+    },
+    "keywords": [
+        "multiplayer",
+        "games",
+        "server",
+        "web",
+        "node"
+    ],
+    "author": "Creadores Program",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Trollhunters501/ServerWebGamePost/issues"
+    },
+    "homepage": "https://github.com/Trollhunters501/ServerWebGamePost",
+    "dependencies": {
+        "node-fetch": "3.3.2"
+    }
+}
