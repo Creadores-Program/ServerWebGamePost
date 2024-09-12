@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 class Client {
     constructor(domain, port, isHttps) {
         this.domain = domain;
@@ -24,15 +23,17 @@ class Client {
         }else{
             prefix = "http://";
         }
-        let reponse = await fetch(prefix+this.domain+":"+this.port+"/ServerWebGamePost", {
-            method: "post",
-            body: JSON.stringify(datapack),
+        fetch(prefix+this.domain+":"+this.port+"/ServerWebGamePost", {
+            method: "POST",
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
+            body: JSON.stringify(datapack)
+        }).then((reponse) => reponse.json()).then((data)=>{
+            this.processSubDatapackspriv(data);
+        }).catch((error) =>{
+            throw error;
         });
-        let data = await reponse.json();
-        this.processSubDatapackspriv(data);
     }
     processSubDatapackspriv(datapacks){
         for(let i in datapacks.datapacksLot){

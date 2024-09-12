@@ -19,8 +19,5 @@
     "bugs": {
         "url": "https://github.com/Trollhunters501/ServerWebGamePost/issues"
     },
-    "homepage": "https://github.com/Trollhunters501/ServerWebGamePost",
-    "dependencies": {
-        "node-fetch": "3.3.2"
-    }
+    "homepage": "https://github.com/Trollhunters501/ServerWebGamePost"
 }
