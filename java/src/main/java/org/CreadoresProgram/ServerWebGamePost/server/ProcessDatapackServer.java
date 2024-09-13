@@ -8,6 +8,11 @@ import com.alibaba.fastjson2.JSON;
 public class ProcessDatapackServer implements Route{
     @Setter
     public ServerWebGamePostServer server;
+
+    public ProcessDatapackServer(ServerWebGamePostServer server){
+        this.server = server;
+    }
+
     @Override
     public Object handle(Request request, Response response) throws Exception{
         JSONObject datapack = JSON.parseObject(request.body());

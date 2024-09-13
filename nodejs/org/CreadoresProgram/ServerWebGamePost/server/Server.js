@@ -17,9 +17,6 @@ class Server {
     getPlayers(){
         return this.players;
     }
-    set players(value){
-        return false;
-    }
     get httpServer(){
         return this.httpServer;
     }
@@ -40,6 +37,15 @@ class Server {
         this.httpServer = http.createServer(this.processSubDatapacks);
         this.httpServer.listen(this.port, "0.0.0.0", ()=>{
             return true;
+        });
+    }
+    stop(){
+        this.httpServer.close(()=>{
+            for (let prop in this) {
+                if (this.hasOwnProperty(prop)) {
+                  delete this[prop];
+                }
+            }
         });
     }
     sendDataPacket(identifier, datapack){
@@ -85,6 +91,7 @@ class Server {
                 this.processDatapacks(datapack);
                 let responDatapacks = {};
                 responDatapacks.datapacksLot = this.players[datapack.identifier];
+                this.players[datapack.identifier] = [];
                 reponse.statusCode = 200;
                 reponse.setHeader("Content-Type", "application/json");
                 reponse.end(JSON.stringify(responDatapacks));

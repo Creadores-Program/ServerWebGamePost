@@ -62,4 +62,10 @@ public class ServerWebGamePostServer{
         }
         this.players.get(identifier).add(datapack);
     }
+    public void stop(){
+        if(this.sparkServer != null){
+            this.sparkServer.stop();
+            this.sparkServer.awaitStop();
+        }
+    }
 }
