@@ -5,7 +5,7 @@
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Trollhunters501/ServerWebGamePost.git"
+        "url": "git+https://github.com/Creadores-Program/ServerWebGamePost.git"
     },
     "keywords": [
         "multiplayer",
@@ -17,7 +17,7 @@
     "author": "Creadores Program",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/Trollhunters501/ServerWebGamePost/issues"
+        "url": "https://github.com/Creadores-Program/ServerWebGamePost/issues"
     },
-    "homepage": "https://github.com/Trollhunters501/ServerWebGamePost"
+    "homepage": "https://github.com/Creadores-Program/ServerWebGamePost"
 }
