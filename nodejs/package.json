@@ -19,5 +19,8 @@
     "bugs": {
         "url": "https://github.com/Creadores-Program/ServerWebGamePost/issues"
     },
+    "scripts": {
+        "test": "node test/test.js"
+    },
     "homepage": "https://github.com/Creadores-Program/ServerWebGamePost"
 }
