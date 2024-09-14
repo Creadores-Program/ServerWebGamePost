@@ -82,7 +82,7 @@ class Server {
             })
             request.on("end", ()=>{
                 let datapack = JSON.parse(body);
-                callback.call(this.processDatapacks, datapack);
+                this.processDatapacks.call(this, datapack);
                 let responDatapacks = {};
                 responDatapacks.datapacksLot = this.players[datapack.identifier];
                 this.players[datapack.identifier] = [];
