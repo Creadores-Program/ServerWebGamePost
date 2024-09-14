@@ -30,6 +30,7 @@ public class ServerWebGamePostClient{
         this.processDatapacks = new ProcessDatapackClient(this);
     }
     public void sendDataPacket(@NonNull JSONObject datapack){
+      try{
         String prefix = "";
         if(this.isHttps){
             prefix = "https://";
@@ -37,13 +38,7 @@ public class ServerWebGamePostClient{
             prefix = "http://";
         }
         String datapackstr = datapack.toJSONString();
-        HttpURLConnection serverFtch;
-        try{
-          serverFtch = (HttpURLConnection) new URL(prefix+this.domain+":"+this.port+"/ServerWebGamePost").openConnection();
-        }catch(Exception e){
-            System.err.println(e);
-            return;
-        }
+        HttpURLConnection serverFtch = (HttpURLConnection) new URL(prefix+this.domain+":"+this.port+"/ServerWebGamePost").openConnection();
         serverFtch.setRequestMethod("POST");
         serverFtch.setRequestProperty("User-Agent", this.userAgent);
         serverFtch.setRequestProperty("Content-Type", "application/json; utf-8");
@@ -64,5 +59,8 @@ public class ServerWebGamePostClient{
         }catch(IOException e){
             System.err.println(e);
         }
+      }catch(Exception erd){
+        System.err.println(erd);
+      }
     }
 }
