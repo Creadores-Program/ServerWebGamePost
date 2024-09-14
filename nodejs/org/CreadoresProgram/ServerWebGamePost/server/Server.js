@@ -5,6 +5,12 @@ class Server {
     getPort(){
         return this.port;
     }
+    get processDatapacks(){
+        return this.processDatapacks;
+    }
+    set processDatapacks(call){
+        this.processDatapacks = call;
+    }
     getProcessDatapacks(){
         return this.processDatapacks;
     }
@@ -80,10 +86,9 @@ class Server {
             request.on("data", chunk =>{
                 body += chunk.toString();
             });
-            let thiz = this;
             let end = ()=>{
                 let datapack = JSON.parse(body);
-                thiz.processDatapacks.call(this, datapack);
+                this.processDatapacks.call(this, datapack);
                 let responDatapacks = {};
                 responDatapacks.datapacksLot = this.players[datapack.identifier];
                 this.players[datapack.identifier] = [];
