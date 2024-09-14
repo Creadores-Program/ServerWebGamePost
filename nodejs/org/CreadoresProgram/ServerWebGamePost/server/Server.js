@@ -14,8 +14,8 @@ class Server {
     getHttpServer(){
         return this.httpServer;
     }
-    constructor(port, imgSrc, procecerDatapacks) {
-        if(procecerDatapacks == null){
+    constructor(port, imgSrc, processDatapacks) {
+        if(processDatapacks == null){
             throw new Error("NullPointerException in procecerDatapacks not Null");
         }
         if(port == null){
@@ -24,7 +24,7 @@ class Server {
         this.port = port;
         this.players = {};
         this.imgSrc = imgSrc;
-        this.processDatapacks = procecerDatapacks;
+        this.processDatapacks = processDatapacks;
         this.httpServer = http.createServer(this.processSubDatapacks);
         this.httpServer.listen(this.port, "0.0.0.0", ()=>{
             return true;
