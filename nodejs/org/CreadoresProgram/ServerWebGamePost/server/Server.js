@@ -79,7 +79,7 @@ class Server {
             let body = "";
             request.on("data", chunk =>{
                 body += chunk.toString();
-            })
+            });
             request.on("end", ()=>{
                 let datapack = JSON.parse(body);
                 this.processDatapacks.call(this, datapack);
