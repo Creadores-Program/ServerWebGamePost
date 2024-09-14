@@ -24,7 +24,7 @@ class Server {
         this.port = port;
         this.players = {};
         this.imgSrc = imgSrc;
-        this.processDatapacks = function(dat){ procecerDatapacks(dat); };
+        this.processDatapacks = procecerDatapacks;
         this.httpServer = http.createServer(this.processSubDatapacks);
         this.httpServer.listen(this.port, "0.0.0.0", ()=>{
             return true;
@@ -82,7 +82,7 @@ class Server {
             })
             request.on("end", ()=>{
                 let datapack = JSON.parse(body);
-                this.processDatapacks(datapack);
+                callback.call(this.processDatapacks, datapack);
                 let responDatapacks = {};
                 responDatapacks.datapacksLot = this.players[datapack.identifier];
                 this.players[datapack.identifier] = [];
