@@ -15,9 +15,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: cd nodejs
-      - run: npm ci
-      - run: npm test
+      - run: npm ci --prefix nodejs
+      - run: npm test --prefix nodejs
 
   publish-gpr:
     needs: build
@@ -31,8 +30,7 @@ jobs:
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
-      - run: cd nodejs
-      - run: npm ci
-      - run: npm publish
+      - run: npm ci --prefix nodejs
+      - run: npm publish --prefix nodejs
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
