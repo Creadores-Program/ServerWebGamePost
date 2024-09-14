@@ -37,8 +37,9 @@ public class ServerWebGamePostClient{
             prefix = "http://";
         }
         String datapackstr = datapack.toJSONString();
+        HttpURLConnection serverFtch;
         try{
-        HttpURLConnection serverFtch = (HttpURLConnection) new URL(prefix+this.domain+":"+this.port+"/ServerWebGamePost").openConnection();
+          serverFtch = (HttpURLConnection) new URL(prefix+this.domain+":"+this.port+"/ServerWebGamePost").openConnection();
         }catch(Exception e){
             System.err.println(e);
             return;
