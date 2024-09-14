@@ -80,17 +80,15 @@ class Server {
             request.on("data", chunk =>{
                 body += chunk.toString();
             });
-            var thiz = this;
             request.on("end", ()=>{
                 let datapack = JSON.parse(body);
-                thiz.processDatapacks(datapack);
+                (this.getProcessDatapacks())(datapack);
                 let responDatapacks = {};
-                responDatapacks.datapacksLot = thiz.players[datapack.identifier];
-                thiz.players[datapack.identifier] = [];
+                responDatapacks.datapacksLot = this.players[datapack.identifier];
+                this.players[datapack.identifier] = [];
                 reponse.statusCode = 200;
                 reponse.setHeader("Content-Type", "application/json");
                 reponse.end(JSON.stringify(responDatapacks));
-                thiz = undefined;
             });
           }
         }catch(erro){
