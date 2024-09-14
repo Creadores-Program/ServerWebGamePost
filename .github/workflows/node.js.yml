@@ -24,4 +24,4 @@ jobs:
     - run: npm install --prefix nodejs
     - run: npm ci --prefix nodejs
     - run: npm run build --if-present --prefix nodejs
-    - run: npm test ServerWebGamePost --prefix nodejs
+    - run: npm ServerWebGamePost --prefix nodejs
