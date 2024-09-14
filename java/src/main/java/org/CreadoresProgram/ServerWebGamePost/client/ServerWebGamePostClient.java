@@ -37,7 +37,7 @@ public class ServerWebGamePostClient{
             prefix = "http://";
         }
         String datapackstr = datapack.toJSONString();
-        HttpURLConnection serverFtch = new URL(prefix+this.domain+":"+this.port+"/ServerWebGamePost").openConnection();
+        HttpURLConnection serverFtch = (HttpURLConnection) new URL(prefix+this.domain+":"+this.port+"/ServerWebGamePost").openConnection();
         serverFtch.setRequestMethod("POST");
         serverFtch.setRequestProperty("User-Agent", this.userAgent);
         serverFtch.setRequestProperty("Content-Type", "application/json; utf-8");
