@@ -10,8 +10,7 @@ public class ProcessDatapackServer implements Route{
     @Setter
     public ServerWebGamePostServer server;
 
-    public ProcessDatapackServer(@NonNull ServerWebGamePostServer server){
-        this.server = server;
+    public ProcessDatapackServer(){
     }
 
     @Override

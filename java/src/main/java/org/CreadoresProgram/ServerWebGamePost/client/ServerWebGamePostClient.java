@@ -6,7 +6,6 @@ import com.alibaba.fastjson2.JSONObject;
 import com.alibaba.fastjson2.JSON;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -38,18 +37,18 @@ public class ServerWebGamePostClient{
             prefix = "http://";
         }
         String datapackstr = datapack.toJSONString();
-        URLConnection serverFtch = new URL(prefix+this.domain+":"+this.port+"/ServerWebGamePost").openConnection();
+        HttpURLConnection serverFtch = new URL(prefix+this.domain+":"+this.port+"/ServerWebGamePost").openConnection();
         serverFtch.setRequestMethod("POST");
         serverFtch.setRequestProperty("User-Agent", this.userAgent);
         serverFtch.setRequestProperty("Content-Type", "application/json; utf-8");
         serverFtch.setDoOutput(true);
         try(OutputStream osftch = serverFtch.getOutputStream()){
             byte[] inputftch = datapackstr.getBytes("utf-8");
-            osftch.write(inputftch, 0, inputftch.length());
+            osftch.write(inputftch, 0, inputftch.length);
         }catch(IOException e){
             System.err.println(e);
         }
-        try(BufferedReader brftch = new BufferedReader(new InputStreamReader(serverFtch.getOutputStream(), "uft-8"))){
+        try(BufferedReader brftch = new BufferedReader(new InputStreamReader(serverFtch.getInputStream(), "uft-8"))){
             StringBuilder responseftch = new StringBuilder();
             String line;
             while((line = brftch.readLine()) != null){
