@@ -7,8 +7,12 @@ function helloWoldData(datapack){
         status: "OK"
     });
 }
-var ServerWGP = new ServerWebGamePost.Server(8080, null, helloWoldData);
+var ServerWGP = new ServerWebGamePost.Server(3000, null, helloWoldData);
 console.info(prefix+"Test Client...");
-var ClientWGP = new ServerWebGamePost.Client("0.0.0.0", 8080, false);
+var ClientWGP = new ServerWebGamePost.Client("localhost", 3000, false);
+ClientWGP.sendDatapacket({
+    identifier: "108023",
+    ping: Date.now()
+});
 ServerWGP.stop();
 console.info(prefix+"Test Done!");
