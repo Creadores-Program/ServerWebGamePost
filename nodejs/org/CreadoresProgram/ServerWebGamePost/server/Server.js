@@ -25,19 +25,19 @@ class Server {
         this.players = {};
         this.imgSrc = imgSrc;
         this.processDatapacks = processDatapacks;
-        this.httpServer = http.createServer(this.processSubDatapacks);
+        this.httpServer = http.createServer((this.processSubDatapacks).bind(this));
         this.httpServer.listen(this.port, "0.0.0.0", ()=>{
             return true;
         });
     }
     stop(){
-        this.httpServer.close(()=>{
+        this.httpServer.close((()=>{
             for (let prop in this) {
                 if (this.hasOwnProperty(prop)) {
                   delete this[prop];
                 }
             }
-        });
+        }).bind(this));
     }
     sendDataPacket(identifier, datapack){
         if(this.players[identifier] == null){
