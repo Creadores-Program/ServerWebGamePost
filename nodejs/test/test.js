@@ -9,8 +9,7 @@ const helloWoldData = (datapack)=>{
     ServerWGP.stop();
     console.info(prefix+"Test Done!");
 };
-var ServerWGP = new ServerWebGamePost.Server(3000, null, function(){});
-ServerWGP.processDatapacks = helloWoldData;
+var ServerWGP = new ServerWebGamePost.Server(3000, null, helloWoldData);
 console.info(prefix+"Test Client...");
 var ClientWGP = new ServerWebGamePost.Client("127.0.0.1", 3000, false);
 const okf = (d)=> {
