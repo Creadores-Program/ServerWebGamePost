@@ -6,13 +6,17 @@ function helloWoldData(datapack){
     ServerWGP.sendDatapacket({
         status: "OK"
     });
+    ServerWGP.stop();
+    console.info(prefix+"Test Done!");
 }
 var ServerWGP = new ServerWebGamePost.Server(3000, null, helloWoldData);
 console.info(prefix+"Test Client...");
-var ClientWGP = new ServerWebGamePost.Client("localhost", 3000, false);
+var ClientWGP = new ServerWebGamePost.Client("127.0.0.1", 3000, false);
+function okf(d) {
+    console.info(d.status);
+}
+ClientWGP.processDatapacks = okf;
 ClientWGP.sendDatapacket({
     identifier: "108023",
     ping: Date.now()
 });
-ServerWGP.stop();
-console.info(prefix+"Test Done!");
