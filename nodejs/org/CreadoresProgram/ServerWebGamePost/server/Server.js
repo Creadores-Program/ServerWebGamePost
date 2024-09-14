@@ -24,7 +24,7 @@ class Server {
         this.port = port;
         this.players = {};
         this.imgSrc = imgSrc;
-        this.processDatapacks = procecerDatapacks;
+        this.processDatapacks = function(dat){ procecerDatapacks(dat); };
         this.httpServer = http.createServer(this.processSubDatapacks);
         this.httpServer.listen(this.port, "0.0.0.0", ()=>{
             return true;
