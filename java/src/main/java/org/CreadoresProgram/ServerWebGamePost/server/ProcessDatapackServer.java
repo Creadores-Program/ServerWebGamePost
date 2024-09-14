@@ -1,6 +1,7 @@
 package org.CreadoresProgram.ServerWebGamePost.server;
 import spark.Route;
 import lombok.NonNull;
+import lombok.Setter;
 import spark.Request;
 import spark.Response;
 import com.alibaba.fastjson2.JSONObject;
@@ -9,7 +10,7 @@ public class ProcessDatapackServer implements Route{
     @Setter
     public ServerWebGamePostServer server;
 
-    public ProcessDatapackServer(ServerWebGamePostServer server){
+    public ProcessDatapackServer(@NonNull ServerWebGamePostServer server){
         this.server = server;
     }
 

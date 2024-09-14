@@ -54,6 +54,9 @@ class Server {
         }
         this.players[identifier][this.players[identifier].length] = datapack;
     }
+    deletePlayer(identifier){
+        delete this.players[identifier];
+    }
     processSubDatapacks(request, reponse){
         try{
           if(request.url == "/favicon.ico"){
