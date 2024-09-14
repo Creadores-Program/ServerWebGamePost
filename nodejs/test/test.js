@@ -10,9 +10,5 @@ function helloWoldData(datapack){
 var ServerWGP = new ServerWebGamePost.Server(8080, null, helloWoldData);
 console.info(prefix+"Test Client...");
 var ClientWGP = new ServerWebGamePost.Client("0.0.0.0", 8080, false);
-ClientWGP.sendDatapacket({
-    identifier: "12983",
-    ping: Date.now()
-});
 ServerWGP.stop();
 console.info(prefix+"Test Done!");
