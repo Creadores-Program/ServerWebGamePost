@@ -31,10 +31,11 @@ class Server {
         });
     }
     stop(){
+        let thiz = this;
         this.httpServer.close(()=>{
             for (let prop in this) {
-                if (this.hasOwnProperty(prop)) {
-                  delete this[prop];
+                if (thiz.hasOwnProperty(prop)) {
+                  delete thiz[prop];
                 }
             }
         });
@@ -77,15 +78,16 @@ class Server {
                 return;
             }
             let body = "";
+            let thiz = this;
             request.on("data", chunk =>{
                 body += chunk.toString();
             })
             request.on("end", ()=>{
                 let datapack = JSON.parse(body);
-                this.processDatapacks(datapack);
+                thiz.processDatapacks(datapack);
                 let responDatapacks = {};
-                responDatapacks.datapacksLot = this.players[datapack.identifier];
-                this.players[datapack.identifier] = [];
+                responDatapacks.datapacksLot = thiz.players[datapack.identifier];
+                thiz.players[datapack.identifier] = [];
                 reponse.statusCode = 200;
                 reponse.setHeader("Content-Type", "application/json");
                 reponse.end(JSON.stringify(responDatapacks));
