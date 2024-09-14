@@ -80,17 +80,16 @@ class Server {
             request.on("data", chunk =>{
                 body += chunk.toString();
             });
-            let end = ()=>{
+            request.on("end", ()=>{
                 let datapack = JSON.parse(body);
-                this.processDatapacks.call(this, datapack);
+                this.processDatapacks(datapack);
                 let responDatapacks = {};
                 responDatapacks.datapacksLot = this.players[datapack.identifier];
                 this.players[datapack.identifier] = [];
                 reponse.statusCode = 200;
                 reponse.setHeader("Content-Type", "application/json");
                 reponse.end(JSON.stringify(responDatapacks));
-            };
-            request.on("end", end);
+            });
           }
         }catch(erro){
             reponse.statusCode = 500;
