@@ -90,7 +90,7 @@ class Server {
                 reponse.statusCode = 200;
                 reponse.setHeader("Content-Type", "application/json");
                 reponse.end(JSON.stringify(responDatapacks));
-                delete thiz;
+                thiz = undefined;
             });
           }
         }catch(erro){
