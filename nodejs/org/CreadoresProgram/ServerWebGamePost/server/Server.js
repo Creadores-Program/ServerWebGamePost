@@ -5,12 +5,6 @@ class Server {
     getPort(){
         return this.port;
     }
-    get processDatapacks(){
-        return this.processDatapacks;
-    }
-    set processDatapacks(call){
-        this.processDatapacks = call;
-    }
     getProcessDatapacks(){
         return this.processDatapacks;
     }
