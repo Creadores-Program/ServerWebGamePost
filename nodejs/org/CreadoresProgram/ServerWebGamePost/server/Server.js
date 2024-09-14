@@ -2,23 +2,14 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 class Server {
-    get port(){
-        return this.port;
-    }
     getPort(){
         return this.port;
-    }
-    get processDatapacks(){
-        return this.processDatapacks;
     }
     getProcessDatapacks(){
         return this.processDatapacks;
     }
     getPlayers(){
         return this.players;
-    }
-    get httpServer(){
-        return this.httpServer;
     }
     getHttpServer(){
         return this.httpServer;
