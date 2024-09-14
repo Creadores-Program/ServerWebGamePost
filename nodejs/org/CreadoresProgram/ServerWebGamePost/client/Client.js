@@ -37,7 +37,7 @@ class Client {
     }
     processSubDatapackspriv(datapacks){
         for(let i in datapacks.datapacksLot){
-            this.processDatapackspriv(datapacks.datapacksLot[i]);
+            callback.call(this.processDatapackspriv, datapacks.datapacksLot[i]);
         }
     }
 }
