@@ -23,7 +23,6 @@ class Client {
         }else{
             prefix = "http://";
         }
-        let thiz = this;
         fetch(prefix+this.domain+":"+this.port+"/ServerWebGamePost", {
             method: "POST",
             headers: {
@@ -31,7 +30,7 @@ class Client {
             },
             body: JSON.stringify(datapack)
         }).then((reponse) => reponse.json()).then((data)=>{
-            thiz.processSubDatapackspriv(data);
+            this.processSubDatapackspriv(data);
         }).catch((error) =>{
             throw error;
         });
