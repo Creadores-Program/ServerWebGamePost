@@ -3,7 +3,7 @@ const prefix = "[Creadores Program Test] ";
 console.info(prefix+"Test Server...");
 const helloWoldData = function (datapack){
     console.info((Date.now() - datapack.ping) + "ms Ping");
-    ServerWGP.sendDataPacket({
+    ServerWGP.sendDataPacket(datapack.identifier, {
         status: "OK"
     });
     ServerWGP.stop();
