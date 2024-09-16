@@ -7,3 +7,7 @@
 ![Maven](https://img.shields.io/badge/apache_maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
 
 A multiplayer server system based on web servers with POST method and datapacks in Json
+
+With this library you can make your own multiplayer server software for your game!
+
+The usage is simple and easy to use! You can see the available programming languages and how to use them in the [Wiki of this project!](https://github.com/Creadores-Program/ServerWebGamePost/wiki)
