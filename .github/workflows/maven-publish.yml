@@ -28,7 +28,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file java/pom.xml
 
-    - name: Publish to GitHub Packages Apache Maven
+    - name: Publish to GitHub Packages Apache Maven 
       working-directory: ./java
       run: mvn deploy -s $GITHUB_WORKSPACE/java/settings.xml
       env:
