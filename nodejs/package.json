@@ -1,5 +1,5 @@
 {
-    "name": "@Creadores-Program/ServerWebGamePost",
+    "name": "ServerWebGamePost",
     "version": "1.0.0",
     "description": "A multiplayer server system based on web servers with POST method",
     "main": "index.js",
