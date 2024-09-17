@@ -25,3 +25,9 @@ jobs:
     - run: npm ci --prefix nodejs
     - run: npm run build --if-present --prefix nodejs
     - run: npm test --prefix nodejs
+    - run: npm pack -- prefix nodejs
+    - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ServerWebGamePost NodeJS Edition
+          path: nodejs/ServerWebGamePost-1.0.0.tgz
