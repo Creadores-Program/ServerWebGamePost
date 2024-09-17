@@ -5,6 +5,7 @@
 ![NPM](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
 ![NodeJS](https://img.shields.io/badge/Node%20js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![Maven](https://img.shields.io/badge/apache_maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
+[![](https://jitpack.io/v/Creadores-Program/ServerWebGamePost.svg)](https://jitpack.io/#Creadores-Program/ServerWebGamePost)
 
 A multiplayer server system based on web servers with POST method and datapacks in Json
 
