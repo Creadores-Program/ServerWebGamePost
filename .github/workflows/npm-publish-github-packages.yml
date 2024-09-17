@@ -33,6 +33,7 @@ jobs:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
           scope: "@Creadores-Program"
+          working-directory: ./nodejs
       - run: npm install --prefix nodejs
       - run: npm run build --if-present --prefix nodejs
       - run: npm ci --prefix nodejs
