@@ -1,11 +1,11 @@
 {
-    "name": "ServerWebGamePost",
+    "name": "@Creadores-Program/ServerWebGamePost",
     "version": "1.0.0",
     "description": "A multiplayer server system based on web servers with POST method",
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Creadores-Program/ServerWebGamePost.git"
+        "url": "https://github.com/Creadores-Program/ServerWebGamePost.git"
     },
     "keywords": [
         "multiplayer",
