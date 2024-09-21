@@ -13,3 +13,15 @@ A multiplayer server system based on web servers with POST method and datapacks 
 With this library you can make your own multiplayer server software for your game!
 
 The usage is simple and easy to use! You can see the available programming languages and how to use them in the [Wiki of this project!](https://github.com/Creadores-Program/ServerWebGamePost/wiki)
+
+# Supported Editions/Programming Languages
+This Software currently has support for:
+- Node.JS
+- Java
+- Browser
+
+# Add content
+If you want to add content you can do so in discussions of this repo
+
+## Add support for more programming languages
+To add support you can submit your fork to a discussion in this repo and we will give you credit for adding it.
