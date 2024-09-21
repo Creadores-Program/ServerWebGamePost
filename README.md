@@ -24,4 +24,7 @@ This Software currently has support for:
 If you want to add content you can do so in discussions of this repo
 
 ## Add support for more programming languages
-To add support you can submit your fork to a discussion in this repo and we will give you credit for adding it.
+To add support you can submit your fork to [a discussion in this repo](https://github.com/Creadores-Program/ServerWebGamePost/discussions/1) and we will give you credit for adding it.
+
+## Bugs
+Please open a [Issue](https://github.com/Creadores-Program/ServerWebGamePost/issues)
