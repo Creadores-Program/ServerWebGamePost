@@ -28,3 +28,6 @@ To add support you can submit your fork to [a discussion in this repo](https://g
 
 ## Bugs
 Please open a [Issue](https://github.com/Creadores-Program/ServerWebGamePost/issues)
+
+# Credits
+- Java, Node.JS and Browser Edition by Trollhunters501
