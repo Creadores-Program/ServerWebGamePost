@@ -17,6 +17,7 @@ The usage is simple and easy to use! You can see the available programming langu
 # Supported Editions/Programming Languages
 This Software currently has support for:
 - Node.JS
+- Deno
 - Java
 - Browser
 
