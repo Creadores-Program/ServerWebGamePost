@@ -4,6 +4,7 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 ![NPM](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
 ![NodeJS](https://img.shields.io/badge/Node%20js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Deno](https://shield.deno.dev/x/)
 ![Maven](https://img.shields.io/badge/apache_maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
 
 [![](https://jitpack.io/v/Creadores-Program/ServerWebGamePost.svg)](https://jitpack.io/#Creadores-Program/ServerWebGamePost)
