@@ -30,12 +30,12 @@ class Client {
             },
             body: JSON.stringify(datapack)
         }).then((reponse) => reponse.json()).then((data)=>{
-            this.processSubDatapackspriv(data);
+            this.#processSubDatapackspriv(data);
         }).catch((error) =>{
             throw error;
         });
     }
-    processSubDatapackspriv(datapacks){
+    #processSubDatapackspriv(datapacks){
         for(let i in datapacks.datapacksLot){
             this.processDatapackspriv.call(this, datapacks.datapacksLot[i]);
         }
