@@ -19,13 +19,13 @@ class Server:
 
     def getPort(self):
         return self.port
-    
+
     def getProcessDatapacks(self):
         return self.processDatapacks
-    
+
     def getPlayers(self):
         return self.players
-    
+
     def deletePlayer(self, identifier):
         del self.players[identifier]
 
@@ -73,6 +73,6 @@ class Server:
             self.end_headers()
             with open(self.serverFat.imgSrc, "rb") as logo:
                 self.wfile.write(logo.read())
-            
+
         def processDatapack(self, datapack):
             pass
