@@ -1,5 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
+
+
 class Server:
 
     def __init__(self, port, imgSrc, processDatapacks):

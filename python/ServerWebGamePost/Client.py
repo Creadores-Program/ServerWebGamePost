@@ -1,4 +1,6 @@
 import requests
+
+
 class Client:
     def __init__(self, domain, port, isHttps):
         self.domain = domain
@@ -10,7 +12,7 @@ class Client:
 
     def getProcessDatapacks(self):
         return self.processdatapacks
-    
+
     def __processSubDatapackspriv(self, datapacks):
         for i in datapacks["datapacksLot"]:
             self.processdatapacks(datapacks["datapacksLot"][i])
