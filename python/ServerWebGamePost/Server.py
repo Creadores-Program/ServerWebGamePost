@@ -13,7 +13,7 @@ class Server:
         self.players = {}
         self.imgSrc = imgSrc
         self.processDatapacks = processDatapacks
-        self.httpServer = HTTPServer(("/ServerWebGamePost", self.port), self.processDatapacks)
+        self.httpServer = HTTPServer(("0.0.0.0", self.port), self.processDatapacks)
         self.httpServer.serverFat = self
         self.httpServer.serve_forever()
 
