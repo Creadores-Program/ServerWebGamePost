@@ -13,9 +13,12 @@ class Server:
         self.players = {}
         self.imgSrc = imgSrc
         self.processDatapacks = processDatapacks
-        self.processDatapacks.serverFat = self
         self.httpServer = HTTPServer(("/ServerWebGamePost", self.port), self.processDatapacks)
+        self.httpServer.serverFat = self
         self.httpServer.serve_forever()
+
+    def getHttpServer(self):
+        return self.httpServer
 
     def getPort(self):
         return self.port
@@ -32,7 +35,7 @@ class Server:
     def stop(self):
         self.httpServer.server_close()
 
-    def sendDatapacket(self, identifier, datapack):
+    def sendDataPacket(self, identifier, datapack):
         if self.players[identifier] is None:
             self.players[identifier] = []
         self.players[identifier].append(datapack)
@@ -47,8 +50,8 @@ class Server:
                 datapack = json.loads(self.rfile.read(int(self.headers['Content-Length'])))
                 self.processDatapack(datapack)
                 responDatapacks = {}
-                responDatapacks.datapacksLot = self.serverFat.players[datapack.identifier]
-                self.serverFat.players[datapack.identifier] = []
+                responDatapacks.datapacksLot = self.server.serverFat.players[datapack.identifier]
+                self.server.serverFat.players[datapack.identifier] = []
                 self.send_response(200)
                 self.send_header('Content-type', "application/json")
                 self.end_headers()
@@ -65,13 +68,13 @@ class Server:
                 self.send_response(404)
                 return
             self.send_response(200)
-            if self.serverFat.imgSrc is None:
+            if self.server.serverFat.imgSrc is None:
                 self.end_headers()
                 self.wfile.write("".encode('utf-8'))
                 return
             self.send_header('Content-Type', "image/jpeg")
             self.end_headers()
-            with open(self.serverFat.imgSrc, "rb") as logo:
+            with open(self.server.serverFat.imgSrc, "rb") as logo:
                 self.wfile.write(logo.read())
 
         def processDatapack(self, datapack):
