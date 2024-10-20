@@ -1,4 +1,4 @@
-import ServerWebGamePost
+from ServerWebGamePost import Server, Client
 import time
 
 
@@ -8,7 +8,7 @@ def testServer():
     pingClient = 0
     serverT = None
 
-    class TestProcess(ServerWebGamePost.Server.ProcessDatapackServer):
+    class TestProcess(Server.ProcessDatapackServer):
         def processDatapack(self, datapack):
             assert datapack.ping == pingClient
             print((int(time.time() * 1000) - datapack.ping) + "ms Ping")
@@ -17,11 +17,11 @@ def testServer():
             })
             serverT.stop()
 
-    serverT = ServerWebGamePost.Server(3000, None, TestProcess)
+    serverT = Server(3000, None, TestProcess)
 
     print(prefix+"Test Client...")
 
-    clientT = ServerWebGamePost.Client("127.0.0.1", 3000, False)
+    clientT = Client("127.0.0.1", 3000, False)
 
     def clientCallb(datapack):
         assert datapack.status == "OK"
