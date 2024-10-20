@@ -63,5 +63,3 @@ class Server:
         self.wfile.write(logo.read())
     def processDatapack(self, datapack):
       pass
-        
-    
