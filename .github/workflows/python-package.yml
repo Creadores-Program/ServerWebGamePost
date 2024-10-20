@@ -38,3 +38,11 @@ jobs:
       run: |
         pytest
       working-directory: ./python
+    - name: Packpage
+      run: |
+        tar czvf ServerWebGamePost-1.0.0.tar.gz python/
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ServerWebGamePost Python Edition
+        path: ServerWebGamePost-1.0.0.tar.gz
