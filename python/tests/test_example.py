@@ -8,7 +8,7 @@ def testServer():
     pingClient = 0
     serverT = None
 
-    class TestProcess(Server.ProcessDatapackServer):
+    class TestProcess(Server.Server.ProcessDatapackServer):
         def processDatapack(self, datapack):
             assert datapack.ping == pingClient
             print((int(time.time() * 1000) - datapack.ping) + "ms Ping")
