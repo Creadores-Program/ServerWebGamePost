@@ -6,6 +6,7 @@
 ![NodeJS](https://img.shields.io/badge/Node%20js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![Deno](https://shield.deno.dev/x/)
 ![Maven](https://img.shields.io/badge/apache_maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
 [![](https://jitpack.io/v/Creadores-Program/ServerWebGamePost.svg)](https://jitpack.io/#Creadores-Program/ServerWebGamePost)
 
@@ -21,6 +22,7 @@ This Software currently has support for:
 - Deno
 - Java
 - Browser
+- Python
 
 # Add content
 If you want to add content you can do so in discussions of this repo
@@ -33,3 +35,4 @@ Please open a [Issue](https://github.com/Creadores-Program/ServerWebGamePost/iss
 
 # Credits
 - Java, Node.JS and Browser Edition by Trollhunters501
+- Python by Rext-dev & Trollhunters501
