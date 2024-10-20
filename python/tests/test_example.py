@@ -1,6 +1,6 @@
-import ServerWebGamePost
+from ServerWebGamePost import Server
 
 
 def testServer():
-    server = ServerWebGamePost.Server
+    server = Server
     print(server)
