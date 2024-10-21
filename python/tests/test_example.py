@@ -2,7 +2,7 @@ import ServerWebGamePost
 import time
 
 
-def testServer():
+def test_Server():
     prefix = "[Creadores Program Test] "
     print(prefix+"Test Server...")
     pingClient = 0
