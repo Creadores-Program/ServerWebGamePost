@@ -25,6 +25,7 @@ def test_Server():
 
     def clientCallb(datapack):
         assert datapack.status == "OK"
+        exit()
     clientT.setProcessDatapacks(clientCallb)
     pingClient = int(time.time() * 1000)
     clientT.sendDataPacket({
