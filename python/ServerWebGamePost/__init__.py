@@ -2,8 +2,8 @@ __author__ = "Creadores Program"
 __version__ = "1.0.0"
 __licence__ = "MIT"
 
-from . import Server, Client
+from . import ServerM, ClientM
 
 
-Server = Server.Server
-Client = Client.Client
+Server = ServerM.Server
+Client = ClientM.Client
