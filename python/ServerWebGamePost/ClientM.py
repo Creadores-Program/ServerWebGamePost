@@ -15,7 +15,7 @@ class Client:
 
     def __processSubDatapackspriv(self, datapacks):
         for i in datapacks["datapacksLot"]:
-            self.processdatapacks(datapacks["datapacksLot"][i])
+            self.processdatapacks(i)
 
     def sendDataPacket(self, datapack):
         prefix = "https://" if self.isHttps else "http://"
