@@ -4,11 +4,11 @@ import threading
 
 
 serverT = None
+pingClient = 0
 
 def test_Server():
     prefix = "[Creadores Program Test] "
     print(prefix+"Test Server...")
-    pingClient = 0
 
     class TestProcess(ServerWebGamePost.Server.ProcessDatapackServer):
         def processDatapack(self, datapack):
@@ -19,8 +19,8 @@ def test_Server():
             })
             serverT.stop()
 
-
     def ThreadServ():
+        global serverT
         serverT = ServerWebGamePost.Server(3000, None, TestProcess)
 
     hiloServ = threading.Thread(target=ThreadServ)
@@ -32,6 +32,7 @@ def test_Server():
 
     def clientCallb(datapack):
         assert datapack.status == "OK"
+        global pingClient
         exit()
     clientT.setProcessDatapacks(clientCallb)
     pingClient = int(time.time() * 1000)
