@@ -1,12 +1,14 @@
 import ServerWebGamePost
 import time
+import threading
 
+
+serverT = None
 
 def test_Server():
     prefix = "[Creadores Program Test] "
     print(prefix+"Test Server...")
     pingClient = 0
-    serverT = None
 
     class TestProcess(ServerWebGamePost.Server.ProcessDatapackServer):
         def processDatapack(self, datapack):
@@ -17,7 +19,12 @@ def test_Server():
             })
             serverT.stop()
 
-    serverT = ServerWebGamePost.Server(3000, None, TestProcess)
+
+    def ThreadServ():
+        serverT = ServerWebGamePost.Server(3000, None, TestProcess)
+
+    hiloServ = threading.Thread(target=ThreadServ)
+    hiloServ.start()
 
     print(prefix+"Test Client...")
 
