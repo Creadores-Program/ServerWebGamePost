@@ -13,7 +13,7 @@ def test_Server():
     class TestProcess(ServerWebGamePost.Server.ProcessDatapackServer):
         def processDatapack(self, datapack):
             assert datapack.ping == pingClient
-            print(str(int(time.time() * 1000) - int(datapack.ping)) + "ms Ping")
+            print(str(int(time.time() * 1000) - datapack.ping) + "ms Ping")
             serverT.sendDataPacket(datapack.identifier, {
                 "status": "OK"
             })
@@ -28,13 +28,13 @@ def test_Server():
 
     print(prefix+"Test Client...")
 
-    clientT = ServerWebGamePost.Client("127.0.0.1", 3000, False)
+    clientT = ServerWebGamePost.Client("127.0.0.1", "3000", False)
 
     def clientCallb(datapack):
         assert datapack.status == "OK"
         exit()
     clientT.setProcessDatapacks(clientCallb)
-    pingClient = str(int(time.time() * 1000))
+    pingClient = int(time.time() * 1000)
     clientT.sendDataPacket({
         "identifier": "108023",
         "ping": pingClient
