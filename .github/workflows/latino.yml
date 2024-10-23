@@ -18,9 +18,8 @@ jobs:
         latino
     - name: Install dependencies
       run: |
-        git clone https://github.com/lenguaje-latino/latino-json
-        cd latino-json
+        git clone https://github.com/primitivorm/latino-curl
+        cd latino-curl
         git submodule update --init --recursive
         sudo chmod +x instalar.sh
         sudo bash instalar.sh
-        cd ..
