@@ -1,0 +1,16 @@
+name: CILatino
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Latino 1.4.1
+      run: |
+        sudo apt-get update
+        sudo apt-get install git cmake build-essential libreadline-dev libpthread-stubs0-dev
+        sudo dpkg -i latino-1.4.1-Debian.deb
