@@ -1,6 +1,6 @@
 {
     "name": "ServerWebGamePost",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "A multiplayer server system based on web servers with POST method",
     "main": "index.js",
     "repository": {
