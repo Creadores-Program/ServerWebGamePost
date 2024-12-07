@@ -1,3 +1,4 @@
+package org.CreadoresProgram.ServerWebGamePost;
 import org.junit.jupiter.api.Test;
 import org.CreadoresProgram.ServerWebGamePost.server.ServerWebGamePostServer;
 import org.CreadoresProgram.ServerWebGamePost.server.ProcessDatapackServer;
@@ -5,7 +6,7 @@ import org.CreadoresProgram.ServerWebGamePost.client.ServerWebGamePostClient;
 import org.CreadoresProgram.ServerWebGamePost.client.ProcessDatapackClient;
 import com.alibaba.fastjson2.JSONObject;
 
-public class Test {
+public class TestServerWGP {
 
     @Test
     public void testCreateServer() {
