@@ -18,6 +18,8 @@ jobs:
           distribution: 'temurin'
       - name: Build with Maven
         run: mvn -B package --file java/pom.xml
+      - name: Test with Maven
+        run: mvn test --file java/pom.xml
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:

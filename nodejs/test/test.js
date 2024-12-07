@@ -7,13 +7,13 @@ const helloWoldData = function (datapack){
         status: "OK"
     });
     ServerWGP.stop();
-    console.info(prefix+"Test Done!");
 };
 var ServerWGP = new ServerWebGamePost.Server(3000, null, helloWoldData);
 console.info(prefix+"Test Client...");
 var ClientWGP = new ServerWebGamePost.Client("127.0.0.1", 3000, false);
 const okf = function(d) {
     console.info(d.status);
+    console.info(prefix+"Test Done!");
 }
 ClientWGP.processDatapacks = okf;
 ClientWGP.sendDatapacket({

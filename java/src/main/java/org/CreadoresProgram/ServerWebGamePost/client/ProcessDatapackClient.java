@@ -10,7 +10,7 @@ public class ProcessDatapackClient{
     public ProcessDatapackClient(@NonNull ServerWebGamePostClient server){
         this.server = server;
     }
-    public void process(@NonNull JSONObject datapacksLot){
+    public final void process(@NonNull JSONObject datapacksLot){
         JSONArray datapacks = datapacksLot.getJSONArray("datapacksLot");
         for(Object datapackOb : datapacks){
             JSONObject datapack = (JSONObject) datapackOb;
