@@ -41,3 +41,4 @@ class ServerWebGamePostClient {
         }
     }
 }
+Object.freeze(ServerWebGamePostClient.prototype);

@@ -98,4 +98,5 @@ class Server {
         }
     }
 }
+Object.freeze(Server.prototype);
 module.exports = Server;

@@ -41,4 +41,5 @@ class Client {
         }
     }
 }
+Object.freeze(Client.prototype);
 module.exports = Client;

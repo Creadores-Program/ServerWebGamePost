@@ -9,7 +9,7 @@ import com.alibaba.fastjson2.JSONObject;
 import com.alibaba.fastjson2.JSONArray;
 import java.util.HashMap;
 import javax.annotation.Nullable;
-public class ServerWebGamePostServer{
+public final class ServerWebGamePostServer{
     @Getter
     private int port;
     @Getter
