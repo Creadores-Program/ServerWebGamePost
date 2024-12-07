@@ -27,8 +27,8 @@ public class TestServerWGP {
         client.setProcessDatapacks(new ProcessDatapackClient(client){
             @Override
             public void processDatapack(JSONObject datapack){
-                System.println(datapack.getString("status"));
-                System.println(prefix+"Test Done!");
+                System.out.println(datapack.getString("status"));
+                System.out.println(prefix+"Test Done!");
                 System.exit(0);
             }
         });
