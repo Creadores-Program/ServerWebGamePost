@@ -49,7 +49,7 @@ public final class ServerWebGamePostClient{
         }catch(IOException e){
             System.err.println(e);
         }
-        try(BufferedReader brftch = new BufferedReader(new InputStreamReader(serverFtch.getInputStream(), "uft-8"))){
+        try(BufferedReader brftch = new BufferedReader(new InputStreamReader(serverFtch.getInputStream(), "utf-8"))){
             StringBuilder responseftch = new StringBuilder();
             String line;
             while((line = brftch.readLine()) != null){
