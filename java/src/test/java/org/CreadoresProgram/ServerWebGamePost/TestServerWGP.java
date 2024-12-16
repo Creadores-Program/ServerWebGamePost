@@ -19,7 +19,6 @@ public class TestServerWGP {
                 JSONObject datatu = new JSONObject();
                 datatu.put("status", "OK");
                 server.sendDataPacket(datapack.getString("identifier"), datatu);
-                server.stop();
             }
         });
         System.out.println(prefix+"Test Client...");
@@ -28,6 +27,7 @@ public class TestServerWGP {
             @Override
             public void processDatapack(JSONObject datapack){
                 System.out.println(datapack.getString("status"));
+                server.stop();
                 System.out.println(prefix+"Test Done!");
                 System.exit(0);
             }
