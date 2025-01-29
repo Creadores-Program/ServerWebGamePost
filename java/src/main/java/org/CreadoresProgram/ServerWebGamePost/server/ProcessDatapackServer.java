@@ -16,7 +16,7 @@ public class ProcessDatapackServer implements Route{
     @Override
     public Object handle(Request request, Response response) throws Exception{
         if(this.server.bannedIps.contains(request.ip())) return null;
-        if(!this.getFilters().isEmpty() && !this.server.getFilters().contains(request.headers("Origin"))){
+        if(!this.server.getFilters().isEmpty() && !this.server.getFilters().contains(request.headers("Origin"))){
             response.status(403);
             return "Forbidden";
         }
