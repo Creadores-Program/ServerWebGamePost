@@ -36,16 +36,48 @@ class Server:
         self.httpServer.server_close()
 
     def sendDataPacket(self, identifier, datapack):
-        if self.players[identifier] is None:
+        if identifier not in self.players:
             self.players[identifier] = []
         self.players[identifier].append(datapack)
+
+    def addFilterOrigin(self, origin):
+        if self.filters is None:
+            self.filters = []
+        self.filters.append(origin)
+    
+    def removeFilterOrigin(self, origin):
+        if self.filters is None:
+            return
+        self.filters.remove(origin)
+
+    def banIp(self, ip):
+        if self.bannedIps is None:
+            self.bannedIps = []
+        self.bannedIps.append(ip)
+
+    def unbanIp(self, ip):
+        if self.bannedIps is None:
+            return
+        self.bannedIps.remove(ip)
 
     class ProcessDatapackServer(BaseHTTPRequestHandler):
 
         def do_POST(self):
+            if(self.server.serverFat.bannedIps is not None and self.client_address[0] in self.server.serverFat.bannedIps):
+                self.send_response(403)
+                self.end_headers()
+                return
             url = str(self.path)
             if url != "/ServerWebGamePost":
                 return
+            if(self.server.serverFat.filters is not None and self.headers['Origin'] not in self.server.serverFat.filters):
+                self.send_response(403)
+                self.end_headers()
+                return
+            allow = ','.join(self.filters) if self.filters and len(self.filters) > 0 else '*'
+            self.send_header('Access-Control-Allow-Origin', allow)
+            self.send_header('Access-Control-Allow-Methods', "POST")
+            self.send_header('Access-Control-Allow-Headers', "Content-Type")
             try:
                 datapack = json.loads(self.rfile.read(int(self.headers['Content-Length'])))
                 self.processDatapack(datapack)
@@ -63,6 +95,10 @@ class Server:
                 self.wfile.write(str(e).encode('utf-8'))
 
         def do_GET(self):
+            if(self.server.serverFat.bannedIps is not None and self.client_address[0] in self.server.serverFat.bannedIps):
+                self.send_response(403)
+                self.end_headers()
+                return
             url = str(self.path)
             if url != "/favicon.ico":
                 self.send_response(404)
@@ -76,6 +112,18 @@ class Server:
             self.end_headers()
             with open(self.server.serverFat.imgSrc, "rb") as logo:
                 self.wfile.write(logo.read())
+
+        def do_OPTIONS(self):
+            if(self.server.serverFat.bannedIps is not None and self.client_address[0] in self.server.serverFat.bannedIps):
+                self.send_response(403)
+                self.end_headers()
+                return
+            self.send_response(200)
+            allow = ','.join(self.filters) if self.filters and len(self.filters) > 0 else '*'
+            self.send_header('Access-Control-Allow-Origin', allow)
+            self.send_header('Access-Control-Allow-Methods', "POST")
+            self.send_header('Access-Control-Allow-Headers', "Content-Type")
+            self.end_headers()
 
         def processDatapack(self, datapack):
             pass

@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import com.alibaba.fastjson2.JSONObject;
 import com.alibaba.fastjson2.JSONArray;
 import java.util.HashMap;
+import java.util.ArrayList;
 import javax.annotation.Nullable;
 public final class ServerWebGamePostServer{
     @Getter
@@ -19,6 +20,11 @@ public final class ServerWebGamePostServer{
 
     @Getter
     private HashMap<String, JSONArray> players;
+
+    public ArrayList<String> bannedIps;
+
+    @Getter
+    private ArrayList<String> filters;
 
     public ServerWebGamePostServer(@NonNull int port){
         this(port, null);
@@ -36,6 +42,7 @@ public final class ServerWebGamePostServer{
         this.sparkServer = Service.ignite();
         this.sparkServer.port(this.port);
         this.sparkServer.get("/favicon.ico", (req, res)-> {
+            if(this.bannedIps.contains(req.ip())) return null;
             if(imgSrc == null){
                 return "";
             }
@@ -55,6 +62,15 @@ public final class ServerWebGamePostServer{
             }
         });
         this.sparkServer.post("/ServerWebGamePost", this.processDatapacks);
+        this.sparkServer.options("/ServerWebGamePost", (req, res)->{
+            if(this.bannedIps.contains(req.ip())) return null;
+            String allow = !this.getFilters().isEmpty() ? String.join(",", this.getFilters()) : "*";
+            res.header("Access-Control-Allow-Origin", allow);
+            res.header("Access-Control-Allow-Methods", "POST");
+            res.header("Access-Control-Allow-Headers", "Content-Type");
+            res.status(200);
+            return "OK";
+        });
     }
     public void sendDataPacket(@NonNull String identifier, @NonNull JSONObject datapack){
         if(!this.players.containsKey(identifier)){
@@ -67,5 +83,17 @@ public final class ServerWebGamePostServer{
             this.sparkServer.stop();
             this.sparkServer.awaitStop();
         }
+    }
+    public void banIp(@NonNull String ip){
+        this.bannedIps.add(ip);
+    }
+    public void unbanIp(@NonNull String ip){
+        this.bannedIps.remove(ip);
+    }
+    public void addFilterOrigin(@NonNull String origin){
+        this.filters.add(origin);
+    }
+    public void removeFilterOrigin(@NonNull String origin){
+        this.filters.remove(origin);
     }
 }

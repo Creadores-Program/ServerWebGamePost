@@ -34,9 +34,9 @@ jobs:
     - name: Packpage
       run: |
         mv "python" "ServerWebGamePost"
-        tar czvf ServerWebGamePost-1.1.1.tar.gz ServerWebGamePost/
+        tar czvf ServerWebGamePost-1.2.0.tar.gz ServerWebGamePost/
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
         name: ServerWebGamePost Python Edition
-        path: ServerWebGamePost-1.1.1.tar.gz
+        path: ServerWebGamePost-1.2.0.tar.gz

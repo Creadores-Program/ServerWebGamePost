@@ -48,8 +48,37 @@ class Server {
     deletePlayer(identifier){
         delete this.players[identifier];
     }
+    addFilterOrigin(filter){
+        if(this.filters == null){
+            this.filters = [];
+        }
+        this.filters[this.filters.length] = filter;
+    }
+    removeFilterOrigin(filter){
+        if(this.filters != null){
+            let index = this.filters.indexOf(filter);
+            if(index != -1){
+                this.filters.splice(index, 1);
+            }
+        }
+    }
+    banIp(ip){
+        if(this.banIps == null){
+            this.banIps = [];
+        }
+        this.banIps[this.banIps.length] = ip;
+    }
+    unbanIp(ip){
+        if(this.banIps != null){
+            let index = this.banIps.indexOf(ip);
+            if(index != -1){
+                this.banIps.splice(index, 1);
+            }
+        }
+    }
     processSubDatapacks(request, reponse){
         try{
+            if(this.banIps != null && this.banIps.includes(request.connection.remoteAddress)) return;
           if(request.url == "/favicon.ico"){
             if(request.method != "GET"){
                 reponse.statusCode = 404;
@@ -72,7 +101,16 @@ class Server {
                 reponse.end(logo);
             });
           }else if(request.url == "/ServerWebGamePost"){
-            if(request.method != "POST"){
+            if(request.method == "OPTIONS"){
+                response.statusCode = 200;
+                let Allow = this.filters && this.filters.length > 0 ? this.filters.join(',') : '*';
+                reponse.setHeader("Access-Control-Allow-Origin", Allow);
+                reponse.setHeader("Access-Control-Allow-Methods", "POST");
+                reponse.setHeader("Access-Control-Allow-Headers", "Content-Type");
+                reponse.end();
+                return;
+            }
+            if(request.method != "POST" || (this.filters != null && this.filters.includes(request.headers["origin"]))){
                 reponse.statusCode = 404;
                 return;
             }
@@ -88,6 +126,10 @@ class Server {
                 this.players[datapack.identifier] = [];
                 reponse.statusCode = 200;
                 reponse.setHeader("Content-Type", "application/json");
+                let Allow = this.filters && this.filters.length > 0 ? this.filters.join(',') : '*';
+                reponse.setHeader("Access-Control-Allow-Origin", Allow);
+                reponse.setHeader("Access-Control-Allow-Methods", "POST");
+                reponse.setHeader("Access-Control-Allow-Headers", "Content-Type");
                 reponse.end(JSON.stringify(responDatapacks));
             }).bind(this));
           }

@@ -31,4 +31,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: ServerWebGamePost NodeJS Deno Edition
-        path: nodejs/ServerWebGamePost-1.1.1.tgz
+        path: nodejs/ServerWebGamePost-1.2.0.tgz
