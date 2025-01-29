@@ -21,10 +21,10 @@ public final class ServerWebGamePostServer{
     @Getter
     private HashMap<String, JSONArray> players;
 
-    public ArrayList<String> bannedIps;
+    public ArrayList<String> bannedIps = new ArrayList<>();
 
     @Getter
-    private ArrayList<String> filters;
+    private ArrayList<String> filters = new ArrayList<>();
 
     public ServerWebGamePostServer(@NonNull int port){
         this(port, null);

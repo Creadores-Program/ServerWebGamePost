@@ -74,7 +74,8 @@ class Server:
                 self.send_response(403)
                 self.end_headers()
                 return
-            allow = ','.join(self.server.serverFat.filters) if self.server.serverFat.filters and len(self.server.serverFat.filters) > 0 else '*'
+            filters = self.server.serverFat.filters
+            allow = ','.join(filters) if filters and len(filters) > 0 else '*'
             self.send_header('Access-Control-Allow-Origin', allow)
             self.send_header('Access-Control-Allow-Methods', "POST")
             self.send_header('Access-Control-Allow-Headers', "Content-Type")
@@ -119,7 +120,8 @@ class Server:
                 self.end_headers()
                 return
             self.send_response(200)
-            allow = ','.join(self.server.serverFat.filters) if self.server.serverFat.filters and len(self.server.serverFat.filters) > 0 else '*'
+            filters = self.server.serverFat.filters
+            allow = ','.join(filters) if filters and len(filters) > 0 else '*'
             self.send_header('Access-Control-Allow-Origin', allow)
             self.send_header('Access-Control-Allow-Methods', "POST")
             self.send_header('Access-Control-Allow-Headers', "Content-Type")
