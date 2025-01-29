@@ -44,7 +44,7 @@ class Server:
         if self.filters is None:
             self.filters = []
         self.filters.append(origin)
-    
+
     def removeFilterOrigin(self, origin):
         if self.filters is None:
             return
@@ -63,18 +63,18 @@ class Server:
     class ProcessDatapackServer(BaseHTTPRequestHandler):
 
         def do_POST(self):
-            if(self.server.serverFat.bannedIps is not None and self.client_address[0] in self.server.serverFat.bannedIps):
+            if (self.server.serverFat.bannedIps is not None and self.client_address[0] in self.server.serverFat.bannedIps):
                 self.send_response(403)
                 self.end_headers()
                 return
             url = str(self.path)
             if url != "/ServerWebGamePost":
                 return
-            if(self.server.serverFat.filters is not None and self.headers['Origin'] not in self.server.serverFat.filters):
+            if (self.server.serverFat.filters is not None and self.headers['Origin'] not in self.server.serverFat.filters):
                 self.send_response(403)
                 self.end_headers()
                 return
-            allow = ','.join(self.filters) if self.filters and len(self.filters) > 0 else '*'
+            allow = ','.join(self.server.serverFat.filters) if self.server.serverFat.filters and len(self.server.serverFat.filters) > 0 else '*'
             self.send_header('Access-Control-Allow-Origin', allow)
             self.send_header('Access-Control-Allow-Methods', "POST")
             self.send_header('Access-Control-Allow-Headers', "Content-Type")
@@ -95,7 +95,7 @@ class Server:
                 self.wfile.write(str(e).encode('utf-8'))
 
         def do_GET(self):
-            if(self.server.serverFat.bannedIps is not None and self.client_address[0] in self.server.serverFat.bannedIps):
+            if (self.server.serverFat.bannedIps is not None and self.client_address[0] in self.server.serverFat.bannedIps):
                 self.send_response(403)
                 self.end_headers()
                 return
@@ -114,12 +114,12 @@ class Server:
                 self.wfile.write(logo.read())
 
         def do_OPTIONS(self):
-            if(self.server.serverFat.bannedIps is not None and self.client_address[0] in self.server.serverFat.bannedIps):
+            if (self.server.serverFat.bannedIps is not None and self.client_address[0] in self.server.serverFat.bannedIps):
                 self.send_response(403)
                 self.end_headers()
                 return
             self.send_response(200)
-            allow = ','.join(self.filters) if self.filters and len(self.filters) > 0 else '*'
+            allow = ','.join(self.server.serverFat.filters) if self.server.serverFat.filters and len(self.server.serverFat.filters) > 0 else '*'
             self.send_header('Access-Control-Allow-Origin', allow)
             self.send_header('Access-Control-Allow-Methods', "POST")
             self.send_header('Access-Control-Allow-Headers', "Content-Type")
