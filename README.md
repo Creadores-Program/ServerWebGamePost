@@ -7,6 +7,8 @@
 ![Deno](https://shield.deno.dev/x/)
 ![Maven](https://img.shields.io/badge/apache_maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white)
+![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)
 
 [![](https://jitpack.io/v/Creadores-Program/ServerWebGamePost.svg)](https://jitpack.io/#Creadores-Program/ServerWebGamePost)
 
@@ -23,6 +25,8 @@ This Software currently has support for:
 - Java
 - Browser
 - Python
+- PHP
+- Lua (Roblox)
 
 # Add content
 If you want to add content you can do so in discussions of this repo
@@ -36,3 +40,4 @@ Please open a [Issue](https://github.com/Creadores-Program/ServerWebGamePost/iss
 # Credits
 - Java, Node.JS and Browser Edition by Trollhunters501
 - Python by Rext-dev & Trollhunters501
+- PHP, Lua(Roblox) by Github Copilot & Trollhunters501
