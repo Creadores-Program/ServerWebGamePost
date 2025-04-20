@@ -33,8 +33,8 @@ def test_Server():
 
     def clientCallb(datapack):
         assert datapack.status == "OK"
-        global pingClient
         exit()
+    global pingClient
     clientT.setProcessDatapacks(clientCallb)
     pingClient = int(time.time() * 1000)
     clientT.sendDataPacket({
